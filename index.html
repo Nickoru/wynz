@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Mahal!</title>
+    <!-- Link to Icon Library (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Background Music Player -->
+    <audio id="hbd-song" loop>
+        <source src="hbd.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Click instruction -->
+    <div id="click-instruction">
+        <p>Click anywhere to start the surprise ✨</p>
+    </div>
+    
+    <div class="confetti-container">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    
+    <!-- Mute Button -->
+    <button id="mute-btn">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+    <header class="hero">
+    <div class="hero-content">
+        <h1 class="wavy-text">
+            <!-- Line 1: Happy Birthday, -->
+            <span>H</span><span>a</span><span>p</span><span>p</span><span>y</span>
+            <span>B</span><span>i</span><span>r</span><span>t</span><span>h</span><span>d</span><span>a</span><span>y</span><span>,</span>
+            <br>
+            <!-- Line 2: Mahal ko -->
+            <span>M</span><span>a</span><span>h</span><span>a</span><span>l</span>
+            <span>k</span><span>o</span>
+        </h1>
+        <p>This is for you. ❤️</p>
+    </div>
+    </header>
+
+    <main class="container">
+        <section class="song-section">
+            <h2>A Song For You, Mahal 🎵</h2>
+            <p class="subtitle">I recorded this kasi it makes me think of you and our journey. Every word is for you. Sana magustuhan mo.</p>
+            <audio controls>
+                <source src="song.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="message-section">
+            <h2>To My Mahal 💌</h2>
+            <div class="message-content">
+                <p>My dearest Mahal,</p>
+                <p>Happy, happy birthday! 🎉 Grabe, another year for you, and parang ang daya na I can only celebrate with you from a distance. But even with all the miles between us, please know that my heart is right there with you today, celebrating everything that you are.</p>
+                <p>Alam mo, sobrang miss na miss na kita. Our love story is one for the books talaga—puno ng late-night video calls, random "I miss you" texts, and dreaming about the day na wala nang "see you soon" kundi "welcome home" nalang. Mahirap, oo, but it's all worth it because it's you. Every second of waiting is worth it for a lifetime with you.</p>
+                <p>I hope your day is as amazing and as wonderful as you are. I hope you're surrounded by happiness, good food, and joy. Just imagine me there, giving you the biggest birthday hug. I am cheering for you, today and always. Maligayang kaarawan, Mahal. I can't wait to see you again. </p>
+                <p>Ingat ka palagi. I love you more than words can say.</p>
+                <p>Nagmamahal, always and forever,</p>
+                <p>- Nix❤️</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <section class="gallery-section">
+            <h2>Our Memories ✨</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="1.jpg" alt="A photo of us"></div>
+                <div class="gallery-item"><img src="2.jpg" alt="Another photo of us"></div>
+                <div class="gallery-item"><img src="3.jpg" alt="A favorite memory"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Distance means so little when someone means so much. I love you, Mahal!</p>
+    </footer>
+
+    <!-- UPDATED SCRIPT with Mute Functionality -->
+    <script>
+        const song = document.getElementById('hbd-song');
+        const instruction = document.getElementById('click-instruction');
+        const muteBtn = document.getElementById('mute-btn');
+        const muteIcon = muteBtn.querySelector('i');
+
+        // Plays music on the first click and shows the mute button
+        document.body.addEventListener('click', function() {
+            if (song.paused) {
+                song.play();
+            }
+            instruction.style.opacity = '0';
+            instruction.style.pointerEvents = 'none'; // Make it unclickable after fade
+            muteBtn.classList.add('visible');
+        }, { once: true });
+
+        // Toggles mute when the mute button is clicked
+        muteBtn.addEventListener('click', function() {
+            song.muted = !song.muted; // Toggle the muted state
+            
+            // Change the icon based on the new muted state
+            if (song.muted) {
+                muteIcon.classList.remove('fa-volume-up');
+                muteIcon.classList.add('fa-volume-mute');
+            } else {
+                muteIcon.classList.remove('fa-volume-mute');
+                muteIcon.classList.add('fa-volume-up');
+            }
+        });
+    </script>
+
+</body>
+</html>
